@@ -299,3 +299,27 @@ int remover_ultimos_n(Lista *li, int n){
    *dado = no->dado; //copia o dado da posição desejada por referência
    return 1;
  }
+
+int buscar_lista_dado(Lista *li, int *pos, int dado){
+  if(li == NULL){
+    return 0;
+  }
+  if((*li)==NULL){
+    return 0;
+  }
+
+  Elemento *no = *li;
+  int i = 1;
+  while(no != NULL && no->dado != dado){
+    no = no->prox;
+    i++;
+  }
+
+  if(no == NULL{
+    return 0;
+  }
+
+  *pos = i;
+
+  return 1;
+}
