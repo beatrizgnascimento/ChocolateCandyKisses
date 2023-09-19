@@ -323,3 +323,18 @@ int buscar_lista_dado(Lista *li, int *pos, int dado){
 
   return 1;
 }
+
+int imprimir_lista(Lista *li){
+  if(li == NULL || (*li)== NULL){
+    return 0;
+  }
+
+  Elemento *aux = *li;
+
+  while(aux->prox != NULL){
+    printf("%d", aux->dado);
+    aux = aux->prox;
+  }
+  printf("%d", aux->dado);
+  return 1;
+}
