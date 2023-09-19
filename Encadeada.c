@@ -178,12 +178,12 @@ int remover_lista_final(Lista *li){
   Elemento *anterior, *atual;
   atual = *li;
 
-  while(atual->prox != *li){
+  while(atual->prox != *li){ //percorre a lista toda
     anterior = atual;
     atual = atual->prox;
   }
 
-  if(atual == (*li)){
+  if(atual == (*li)){ //se a lista tiver 1 elemento
     *li = atual->prox;
   }else{
     anterior->prox = atual->prox;
@@ -192,3 +192,4 @@ int remover_lista_final(Lista *li){
   free(atual);
   return 1;
 }
+
