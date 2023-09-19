@@ -220,3 +220,55 @@ int remover_lista_meio(Lista *li, int dado){
   free(atual);
   return 1;
 }
+
+int remover_ultimos_n(Lista *li, int n){
+  if(li == NULL){
+    return 0;
+  }
+
+  if((*li)==NULL){
+    return 0;
+  }
+
+  if(n <= 0){
+    return 0;
+  }
+
+  int tamanho = tamanho_lista(li);
+  Elemento *proximo, *atual, *anterior;
+
+  if(n >= tamanho){
+    atual = *li;
+    while(atual != NULL){
+      proximo = atual->prox;
+      free(atual);
+      atual = proximo;
+    }
+    *li = NULL;
+    return 1;
+  }else{
+    anterior = NULL;
+    atual = *li;
+
+    for(int i = 0; i < tamanho - n;i++){
+      anterior = atual;
+      atual = atual->prox;
+    }
+
+    if(anterior != NULL){
+      anterior->prox = NULL;
+    }else{
+      *li = NULL;
+    }
+
+     while (atual != NULL) {
+      proximo = atual->prox;
+      free(atual);
+      atual = proximo;
+    }
+  }
+
+  
+  return 1; 
+  
+}
