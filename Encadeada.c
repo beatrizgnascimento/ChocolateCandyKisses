@@ -165,3 +165,30 @@ int remover_lista_inicio(Lista *li){
   free(atual);
   return 1;
 }
+
+
+int remover_lista_final(Lista *li){
+  if(li == NULL){
+    return 0;
+  }
+  if((*li)==NULL){
+    return 0; //lista vazia
+  }
+
+  Elemento *anterior, *atual;
+  atual = *li;
+
+  while(atual->prox != *li){
+    anterior = atual;
+    atual = atual->prox;
+  }
+
+  if(atual == (*li)){
+    *li = atual->prox;
+  }else{
+    anterior->prox = atual->prox;
+  }
+
+  free(atual);
+  return 1;
+}
