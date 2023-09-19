@@ -272,3 +272,30 @@ int remover_ultimos_n(Lista *li, int n){
   return 1; 
   
 }
+
+ int buscar_lista_posicao(Lista *li, int pos, int *dado){
+   if(li == NULL){
+     return 0;
+   }
+   if((*li)==NULL){
+     return 0;
+   }
+   if(pos <= 0){
+     return 0;
+   }
+
+   Elemento *no = *li;
+   int i = 1;
+
+   while(no != NULL && i < pos){
+     no = no->prox;
+     i++;
+   }
+
+   if(no == NULL){ //se o no chegar ate a posicao null significa que o elemento nao existe na lista
+     return 0;
+   }
+
+   *dado = no->dado; //copia o dado da posição desejada por referência
+   return 1;
+ }
