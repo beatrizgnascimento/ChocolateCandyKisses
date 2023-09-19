@@ -193,3 +193,30 @@ int remover_lista_final(Lista *li){
   return 1;
 }
 
+int remover_lista_meio(Lista *li, int dado){
+  if(li == NULL){
+    return 0;
+  }
+  if((*li)==NULL){
+    return 0;
+  }
+
+  Elemento *anterior, *atual;
+
+  while(atual != NULL && atual->dado != dado){
+    anterior = atual;
+    atual = atual->prox;
+  }
+  
+  if(atual == (*li)){
+    *li = atual->prox;
+  }else{
+    anterior->prox = atual->prox;
+  }
+
+  if(atual == NULL){
+    return 0;
+  }
+  free(atual);
+  return 1;
+}
